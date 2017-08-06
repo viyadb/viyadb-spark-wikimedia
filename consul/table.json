@@ -1,0 +1,25 @@
+{
+  "name": "edits",
+  "realTime": {
+    "streamSourceClass": "com.github.viyadb.spark.samples.wikimedia.WikimediaSource",
+    "messageFactoryClass": "com.github.viyadb.spark.samples.wikimedia.WikimediaMessageFactory",
+    "outputPath": "/tmp/wikimedia-output",
+    "windowDuration": "PT2M"
+  },
+  "batch": {
+    "timeColumn": {"name": "time"}
+  },
+  "dimensions": [
+    {"name": "channel"},
+    {"name": "time", "type": "time"},
+    {"name": "title"},
+    {"name": "flags"},
+    {"name": "diffUrl"},
+    {"name": "user"},
+    {"name": "byteDiff"},
+    {"name": "summary"}
+  ],
+  "metrics": [
+    {"name": "count", "type": "count"}
+  ]
+}
