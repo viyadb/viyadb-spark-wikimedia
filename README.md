@@ -20,7 +20,7 @@ mvn package
 First, create needed keys in Consul by running:
 
 ```bash
-cd consul/ ; ./create-conf.sh
+(cd consul/ ; ./create-conf.sh)
 ```
 
 Then, run the Spark streaming application:

@@ -11,7 +11,7 @@
   },
   "dimensions": [
     {"name": "channel"},
-    {"name": "time", "type": "time"},
+    {"name": "time", "type": "time", "granularity": "day"},
     {"name": "title"},
     {"name": "flags"},
     {"name": "diffUrl"},
