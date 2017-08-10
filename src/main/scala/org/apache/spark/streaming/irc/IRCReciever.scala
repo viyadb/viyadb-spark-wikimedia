@@ -15,10 +15,10 @@ import scala.util.{Random, Try}
 
 class IRCReceiver[T](storageLevel: StorageLevel,
                      server: String, port: Int, channels: Seq[String],
-                     messageHandler: MessageEvent => Option[T]
+                     val messageHandler: MessageEvent => Option[T]
                     ) extends Receiver[T](storageLevel) with Logging {
 
-  val nick = s"viyadb-${Random.nextLong()}"
+  private val nick = s"viyadb-${Random.nextLong()}"
 
   @transient
   lazy val botX: PircBotX = createBot()
@@ -42,7 +42,7 @@ class IRCReceiver[T](storageLevel: StorageLevel,
   }
 
   override def onStart(): Unit = {
-    val executor = ThreadUtils.newDaemonFixedThreadPool(1, "IrcReceiver")
+    val executor = ThreadUtils.newDaemonFixedThreadPool(1, "IRCReceiver")
     executor.submit(new BotWorker())
     executor.shutdown()
   }
@@ -62,4 +62,5 @@ class IRCReceiver[T](storageLevel: StorageLevel,
       logInfo("Disconnected from IRC server")
     }
   }
+
 }

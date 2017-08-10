@@ -10,6 +10,5 @@ class KryoRegistrator extends com.github.viyadb.spark.streaming.KryoRegistrator 
     kryo.register(classOf[IRCReceiver[_]])
     kryo.register(classOf[WikimediaSource])
     kryo.register(Class.forName("com.github.viyadb.spark.samples.wikimedia.WikimediaSource$$anonfun$1"))
-    kryo.register(Class.forName("com.github.viyadb.spark.samples.wikimedia.WikimediaSource$$anonfun$2"))
   }
 }

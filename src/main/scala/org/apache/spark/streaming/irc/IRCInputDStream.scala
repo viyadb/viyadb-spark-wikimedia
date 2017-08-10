@@ -9,11 +9,11 @@ import org.pircbotx.hooks.events.MessageEvent
 
 import scala.reflect.ClassTag
 
-class IRCInputDStream[T: ClassTag](ssc : StreamingContext,
-                                   storageLevel: StorageLevel = StorageLevel.MEMORY_ONLY,
+class IRCInputDStream[T: ClassTag](_ssc: StreamingContext,
+                                   storageLevel: StorageLevel = StorageLevel.MEMORY_ONLY_SER,
                                    server: String, port: Int, channels: Seq[String],
                                    messageHandler: MessageEvent => Option[T]
-                                  ) extends ReceiverInputDStream[T](ssc) with Logging {
+                                  ) extends ReceiverInputDStream[T](_ssc) with Logging {
 
   override def getReceiver(): Receiver[T] = {
     new IRCReceiver[T](storageLevel, server, port, channels, messageHandler)
@@ -21,8 +21,8 @@ class IRCInputDStream[T: ClassTag](ssc : StreamingContext,
 }
 
 object IRCInputDStream {
-  def create[T: ClassTag](ssc : StreamingContext,
-                          storageLevel: StorageLevel = StorageLevel.MEMORY_ONLY,
+  def create[T: ClassTag](ssc: StreamingContext,
+                          storageLevel: StorageLevel = StorageLevel.MEMORY_ONLY_SER,
                           server: String, port: Int, channels: Seq[String],
                           messageHandler: MessageEvent => Option[T]
                          ): IRCInputDStream[T] = {
