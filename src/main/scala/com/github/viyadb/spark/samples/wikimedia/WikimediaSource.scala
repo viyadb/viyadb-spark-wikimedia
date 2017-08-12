@@ -11,7 +11,7 @@ import org.pircbotx.hooks.events.MessageEvent
 class WikimediaSource(config: JobConf) extends StreamSource(config) {
 
   @transient
-  private val messageHandler = (m: MessageEvent) => messageFactory.createMessage(m.getChannel.getName, m.getMessage)
+  private val messageHandler = (m: MessageEvent) => recordFactory.createRecord(m.getChannel.getName, m.getMessage)
 
   override protected def saveDataFrame(df: DataFrame, time: Time): Unit = {
     super.saveDataFrame(df.coalesce(1), time)

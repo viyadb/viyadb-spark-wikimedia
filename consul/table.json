@@ -1,9 +1,9 @@
 {
   "name": "edits",
+  "deepStorePath": "/tmp/wikimedia",
   "realTime": {
     "streamSourceClass": "com.github.viyadb.spark.samples.wikimedia.WikimediaSource",
-    "messageFactoryClass": "com.github.viyadb.spark.samples.wikimedia.WikimediaMessageFactory",
-    "outputPath": "/tmp/wikimedia-output",
+    "recordFactoryClass": "com.github.viyadb.spark.samples.wikimedia.WikimediaRecordFactory",
     "windowDuration": "PT2M"
   },
   "batch": {
@@ -11,7 +11,7 @@
   },
   "dimensions": [
     {"name": "channel"},
-    {"name": "time", "type": "time", "granularity": "day"},
+    {"name": "time", "type": "time", "granularity": "day", "format": "%Y-%m-%d"},
     {"name": "title"},
     {"name": "flags"},
     {"name": "diffUrl"},
