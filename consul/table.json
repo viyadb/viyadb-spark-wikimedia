@@ -9,6 +9,7 @@
   "batch": {
     "partitioning": {
       "column": "user",
+      "hashColumn": true,
       "numPartitions": 3
     }
   },
