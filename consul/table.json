@@ -7,7 +7,10 @@
     "windowDuration": "PT2M"
   },
   "batch": {
-    "timeColumn": {"name": "time"}
+    "partitioning": {
+      "column": "user",
+      "numPartitions": 3
+    }
   },
   "dimensions": [
     {"name": "channel"},
@@ -21,5 +24,6 @@
   ],
   "metrics": [
     {"name": "count", "type": "count"}
-  ]
+  ],
+  "timeColumn": {"name": "time"}
 }
