@@ -1,5 +1,5 @@
 {
-  "name": "edits",
+  "name": "wikimedia",
   "deepStorePath": "/tmp/wikimedia",
   "realTime": {
     "streamSourceClass": "com.github.viyadb.spark.samples.wikimedia.WikimediaSource",
