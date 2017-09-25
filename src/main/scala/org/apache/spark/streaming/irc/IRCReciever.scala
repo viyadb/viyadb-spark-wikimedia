@@ -62,5 +62,4 @@ class IRCReceiver[T](storageLevel: StorageLevel,
       logInfo("Disconnected from IRC server")
     }
   }
-
 }

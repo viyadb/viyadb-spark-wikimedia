@@ -1,0 +1,31 @@
+{
+  "deepStorePath": "/tmp/wikimedia",
+  "realTime": {
+    "streamingProcessClass": "com.github.viyadb.spark.samples.wikimedia.WikimediaProcess",
+    "windowDuration": "PT30S",
+    "parseSpec": {
+      "timeColumn": {
+        "name": "time"
+      },
+      "recordParserClass": "com.github.viyadb.spark.samples.wikimedia.WikimediaRecordParser"
+    },
+    "notifier": {
+      "type": "file",
+      "channel": "/tmp/wikimedia",
+      "queue": "rt-notifications"
+    }
+  },
+  "batch": {
+    "partitioning": {
+      "column": "user",
+      "hashColumn": true,
+      "numPartitions": 3
+    },
+    "notifier": {
+      "type": "file",
+      "channel": "/tmp/wikimedia",
+      "queue": "batch-notifications"
+    }
+  },
+  "tables": ["wikimedia"]
+}

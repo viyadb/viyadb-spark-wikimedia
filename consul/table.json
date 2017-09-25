@@ -1,18 +1,5 @@
 {
-  "name": "edits",
-  "deepStorePath": "/tmp/wikimedia",
-  "realTime": {
-    "streamSourceClass": "com.github.viyadb.spark.samples.wikimedia.WikimediaSource",
-    "recordFactoryClass": "com.github.viyadb.spark.samples.wikimedia.WikimediaRecordFactory",
-    "windowDuration": "PT2M"
-  },
-  "batch": {
-    "partitioning": {
-      "column": "user",
-      "hashColumn": true,
-      "numPartitions": 3
-    }
-  },
+  "name": "wikimedia",
   "dimensions": [
     {"name": "channel"},
     {"name": "time", "type": "time", "granularity": "day", "format": "%Y-%m-%d"},
@@ -25,6 +12,5 @@
   ],
   "metrics": [
     {"name": "count", "type": "count"}
-  ],
-  "timeColumn": {"name": "time"}
+  ]
 }

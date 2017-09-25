@@ -27,7 +27,6 @@ Then, run the Spark streaming application:
 
 ```bash
 spark-submit --class com.github.viyadb.spark.samples.wikimedia.Job \
-    target/viyadb-spark-wikimedia_2.11-0.0.1.jar \
-    --table "wikimedia"
+    target/viyadb-spark-wikimedia_2.11-0.0.2.jar --indexer-id wikimedia
 ```
 
